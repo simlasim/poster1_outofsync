@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebAR poster 1</title>
+    <!-- Load A-Frame -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!-- Load AR.js with A-Frame integration -->
+    <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/1.7.2/aframe/build/aframe-ar.min.js"></script>
+    <style>
+      body { margin: 0; overflow: hidden; }
+      video { display: none; } /* hide the original video element */
+    </style>
+  </head>
+  <body>
+    <!-- AR scene -->
+    <a-scene embedded arjs>
+      
+      <!-- Marker -->
+      <a-marker preset="hiro">
+        <!-- Display the video as a flat surface -->
+        <a-video
+          src="#poster1"
+          width="1.5" height="1"
+          position="0 0.5 0"
+          rotation="-90 0 0"
+          material="shader: flat; transparent: true"
+          autoplay="true"
+          loop="true"
+          muted="true">
+        </a-video>
+      </a-marker>
+
+      <!-- Camera -->
+      <a-entity camera></a-entity>
+    </a-scene>
+
+    <!-- Hidden transparent video (make sure it's .webm or .mov with alpha) -->
+    <video
+      id="poster1"
+      autoplay
+      loop
+      muted
+      playsinline
+      webkit-playsinline>
+      <source src="animation.webm" type="video/webm">
+      Your browser does not support WebM with alpha transparency.
+    </video>
+  </body>
+</html>
